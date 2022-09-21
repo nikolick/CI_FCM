@@ -5,7 +5,6 @@ import numpy as np
 distance_functions = ['cosine', 'minkowski', 'chebyshev']
 
 # function to minimize 
-
 def SSE(X, C, w, p, dist) -> float:
     # X - dataset of n-dimensional datapoints
     # C - clusters represented by centroids

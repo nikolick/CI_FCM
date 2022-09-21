@@ -1,3 +1,4 @@
+from math import floor
 import numpy as np
 import random
 
@@ -59,6 +60,39 @@ class Particle:
         self.velocity = (inertia * self.velocity +
                         cognitive *  (self.best_position - self.position) * random_local +
                         social * (Particle.global_best_clusters - self.position) * random_global)
+
+class PSO:
+    def __init__(self, dataset, swarm_size, n_clusters, n_iters, sse_params, constants, eps=None):
+        self.n_iters = n_iters
+        # if eps is none, we will just perform all the iterations
+        self.eps = eps
+        self.dataset = dataset
+        self.swarm_size = swarm_size
+        self.n_clusters = n_clusters
+        self.sse_params = sse_params
+        self.constants = constants
+        
+    def fit(self, verbose = False):
+        # To avoid remembering and skewing the particles towards
+        # the last global values, we reset them
+        Particle.global_best_clusters = None
+        Particle.global_best_sse = None
+
+        self.swarm = [Particle(self.dataset, self.n_clusters, self.sse_params, self.constants) for _ in range(self.swarm_size)]
+        best_values = []
+        for it_ in range(self.n_iters):
+            if verbose and it_ % (floor(self.n_iters / 10)) == 0:
+                print(f'Iteration {it_} of {self.n_iters}')
+            for particle in self.swarm:
+                particle.update_velocity()
+                particle.update_position()
+            best_values.append(Particle.global_best_sse)
+
+        return best_values
+
+        
+            
+
     
 
 

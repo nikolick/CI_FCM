@@ -1,6 +1,10 @@
 from math import floor
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
+from gap_statistic import OptimalK
+import numpy as np
 import os
-from random import random
+from matplotlib import pyplot as plt
 import string
 import re
 from nltk.stem import WordNetLemmatizer
@@ -52,6 +56,40 @@ def reduce_dimensions(X_tfidf):
     print(sum(transformer.explained_variance_))
 
     return X_trans
+
+# Function to use elbow method, silhouette score and gap statistic to find optimal k
+def elbow_silhouette_graph(data_frame):
+    sum_of_squared_distances = []
+    K = range(5,20)
+    for num_clusters in K :
+        kmeans = KMeans(n_clusters=num_clusters, random_state=1)
+        kmeans.fit(data_frame)
+        sum_of_squared_distances.append(kmeans.inertia_)
+    plt.plot(K,sum_of_squared_distances,'bx-')
+    plt.xlabel('Values of K') 
+    plt.ylabel('Sum of squared distances/Inertia') 
+    plt.title('Elbow Method For Optimal k')
+    plt.show()
+
+    range_n_clusters = range(5,20)
+    silhouette_avg = []
+    for num_clusters in range_n_clusters:
+    # initialise kmeans
+        kmeans = KMeans(n_clusters=num_clusters, random_state=1)
+        kmeans.fit(data_frame)
+        cluster_labels = kmeans.labels_
+        # silhouette score
+        silhouette_avg.append(silhouette_score(data_frame, cluster_labels))
+
+    plt.plot(range_n_clusters,silhouette_avg,'bx-')
+    plt.xlabel('Values of K') 
+    plt.ylabel('Silhouette score') 
+    plt.title('Silhouette analysis For Optimal k')
+    plt.show()
+
+    optimalK = OptimalK(n_jobs=4, parallel_backend='joblib')
+    n_clusters = optimalK(data_frame, cluster_array=np.arange(5,20))
+    print(f'Gap statistic: {n_clusters}')
 
 
 
