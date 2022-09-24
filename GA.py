@@ -101,4 +101,4 @@ class GeneticAlgorithm():
             best_individuals.append(min(new_population).value)
 
 
-        return best_individuals
+        return self.population, best_individuals

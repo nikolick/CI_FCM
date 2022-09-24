@@ -71,22 +71,23 @@ class PSO:
         self.n_clusters = n_clusters
         self.sse_params = sse_params
         self.constants = constants
+
+    def init_swarm(self):
+        self.swarm = [Particle(self.dataset, self.n_clusters, self.sse_params, self.constants) for _ in range(self.swarm_size)]
+
         
     def fit(self, verbose = False):
-        # To avoid remembering and skewing the particles towards
-        # the last global values, we reset them
-        Particle.global_best_clusters = None
-        Particle.global_best_sse = None
-
-        self.swarm = [Particle(self.dataset, self.n_clusters, self.sse_params, self.constants) for _ in range(self.swarm_size)]
+    #    self.swarm = [Particle(self.dataset, self.n_clusters, self.sse_params, self.constants) for _ in range(self.swarm_size)]
         best_values = []
         for it_ in range(self.n_iters):
             if verbose and it_ % (floor(self.n_iters / 10)) == 0:
                 print(f'Iteration {it_} of {self.n_iters}')
+#            self.constants['inertia'] = (0.5)*(self.n_iters - it_)/(self.n_iters) + 0
             for particle in self.swarm:
                 particle.update_velocity()
                 particle.update_position()
             best_values.append(Particle.global_best_sse)
+            
 
         return best_values
 

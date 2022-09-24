@@ -1,0 +1,72 @@
+TESTING PSO WITH:
+
+n_iters: 50
+PSO constants: {"inertia": 0.5, "cognitive": 0.5, "social": 0.5}
+SSE parameters: {"p": 2, "dist": "cosine"}
+n_articles: 200
+swarm size: 30
+=========================
+
+1. PSO best result: 11.333932422771753, elapsed time: 21.30352020263672
+2. PSO best result: 11.32814329096157, elapsed time: 21.571085453033447
+3. PSO best result: 11.309418624489386, elapsed time: 21.6483793258667
+4. PSO best result: 11.292674820684727, elapsed time: 21.955015420913696
+5. PSO best result: 11.231410709816736, elapsed time: 21.59158492088318
+TESTING PSO WITH:
+
+n_iters: 50
+PSO constants: {"inertia": 0.9, "cognitive": 0.5, "social": 0.5}
+SSE parameters: {"p": 2, "dist": "cosine"}
+n_articles: 200
+swarm size: 30
+=========================
+
+1. PSO best result: 11.584966310936727, elapsed time: 22.24132466316223
+2. PSO best result: 11.462287609734258, elapsed time: 22.399048566818237
+3. PSO best result: 11.673043868448302, elapsed time: 22.469232320785522
+4. PSO best result: 11.644817898035878, elapsed time: 22.355374097824097
+5. PSO best result: 11.623913594306273, elapsed time: 22.061795234680176
+TESTING PSO WITH:
+
+n_iters: 50
+PSO constants: {"inertia": 0.5, "cognitive": 0.4, "social": 0.5}
+SSE parameters: {"p": 2, "dist": "cosine"}
+n_articles: 200
+swarm size: 30
+=========================
+
+1. PSO best result: 11.547913943459118, elapsed time: 21.653063535690308
+2. PSO best result: 11.45978755729598, elapsed time: 21.342562675476074
+3. PSO best result: 11.39972344515627, elapsed time: 21.448823928833008
+4. PSO best result: 11.48012882597516, elapsed time: 21.457553148269653
+5. PSO best result: 11.288796779470374, elapsed time: 21.303322792053223
+6. PSO best result: 11.502401976060234, elapsed time: 21.4460506439209
+TESTING PSO WITH:
+
+n_iters: 50
+PSO constants: {"inertia": 0.5, "cognitive": 0.5, "social": 0.4}
+SSE parameters: {"p": 2, "dist": "cosine"}
+n_articles: 200
+swarm size: 30
+=========================
+
+1. PSO best result: 11.465249932196222, elapsed time: 22.35877299308777
+2. PSO best result: 11.487724489159383, elapsed time: 22.33694839477539
+3. PSO best result: 11.521733609030232, elapsed time: 22.0426344871521
+4. PSO best result: 11.372906671801681, elapsed time: 21.93493127822876
+5. PSO best result: 11.453401204640109, elapsed time: 21.451560497283936
+6. PSO best result: 11.498063044204097, elapsed time: 21.28876543045044
+TESTING PSO WITH:
+
+n_iters: 200
+PSO constants: {"inertia": 0.5, "cognitive": 0.7, "social": 0.6}
+SSE parameters: {"p": 2, "dist": "cosine"}
+n_articles: 500
+swarm size: 50
+=========================
+
+1. PSO best result: 28.81809322851742, elapsed time: 394.3130168914795
+2. PSO best result: 28.562444054607315, elapsed time: 399.3315167427063
+3. PSO best result: 28.57026105235816, elapsed time: 410.0031530857086
+4. PSO best result: 28.700098102407654, elapsed time: 417.49510622024536
+5. PSO best result: 28.74766837104539, elapsed time: 399.02113342285156
